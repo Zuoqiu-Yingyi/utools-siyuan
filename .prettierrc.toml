@@ -1,0 +1,12 @@
+# REF [Options · Prettier](https://prettier.io/docs/en/options.html)
+printWidth = 1024
+tabWidth = 4
+useTabs = false
+semi = true
+singleQuote = false
+trailingComma = "all"
+bracketSpacing = true
+bracketSameLine = false
+arrowParens = "avoid"
+wrapAtrributes = "force-aligned"
+singleAttributePerLine = true

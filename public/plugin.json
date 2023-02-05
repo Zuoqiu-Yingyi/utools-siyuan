@@ -1,0 +1,22 @@
+{
+    "logo": "siyuan-128.png",
+    "main": "index.html",
+    "preload": "preload.js",
+    "features": [
+        {
+            "code": "setting",
+            "explain": "思源笔记配置",
+            "cmds": [
+                "设置",
+                "配置",
+                "思源笔记设置"
+            ]
+        }
+    ],
+    "pluginSetting": {
+        "single": false
+    },
+    "development": {
+        "main": "http://localhost:5173"
+    }
+}

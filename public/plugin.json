@@ -4,12 +4,13 @@
     "preload": "preload.js",
     "features": [
         {
-            "code": "setting",
-            "explain": "思源笔记配置",
+            "code": "config",
+            "explain": "打开思源笔记插件配置窗口",
             "cmds": [
-                "设置",
-                "配置",
-                "思源笔记设置"
+                "思源设置",
+                "思源配置",
+                "思源笔记设置",
+                "思源笔记配置"
             ]
         }
     ],

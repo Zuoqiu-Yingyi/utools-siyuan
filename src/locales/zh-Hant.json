@@ -1,0 +1,141 @@
+{
+    "alias": "別名",
+    "block": "塊",
+    "check_all": "全選",
+    "client": "客戶端",
+    "conect_siyuan_client": "連接@:siyuan@:client",
+    "conect_success": "連接@:success",
+    "content": "内容",
+    "help": {
+        "auto_open": "頁面加載後自動打開抽屜",
+        "block_attrs_exist": "存在塊屬性",
+        "search_empty": "暫無搜索結果",
+        "search_march": "匹配的搜索結果",
+        "server": "@:siyuan_server URL 源",
+        "settings_empty": "暫無保存的配置",
+        "token": "可在 @:path.token 中獲取"
+    },
+    "hostname": "IP 地址 {'|'} 域名 {'|'} 主機名",
+    "label": {
+        "auto_open": "自動打開",
+        "delete": "刪除",
+        "fold": "折疊",
+        "preview_focus": "預覽聚焦",
+        "reset": "重置",
+        "save": "保存",
+        "search_results_list": "@:search_result@:list",
+        "search_results_tree": "@:search_result@:tree",
+        "unfold": "展開",
+        "wrap_breadcrumb": "麵包屑換行",
+        "wrap_breadcrumb_item": "麵包屑項換行"
+    },
+    "language": "語言",
+    "list": "列表",
+    "memo": "備註",
+    "name": "命名",
+    "notebook": "筆記本",
+    "other": "其他",
+    "other_settings": "@:other@:settings",
+    "path": {
+        "about": "關於",
+        "settings": "設置",
+        "token": "@:path.settings > @:path.about > @:token"
+    },
+    "relevance": "相關性",
+    "result": "結果",
+    "search": "搜索",
+    "search_config": {
+        "block_types": {
+            "blockquote": "@:types.NodeBlockquote@:block",
+            "codeBlock": "@:types.NodeCodeBlock@:block",
+            "container": "容器塊",
+            "details": "根據 @:search_config.block_types.label 篩選@:search_result",
+            "document": "@:types.NodeDocument@:block",
+            "embedBlock": "@:types.NodeBlockQueryEmbed@:block",
+            "heading": "@:types.NodeHeading@:block",
+            "htmlBlock": "@:types.NodeHTMLBlock@:block",
+            "label": "塊類型",
+            "leaf": "葉子塊",
+            "list": "@:types.NodeList@:block",
+            "listItem": "@:types.NodeListItem",
+            "mathBlock": "@:types.NodeMathBlock@:block",
+            "paragraph": "@:types.NodeParagraph@:block",
+            "superBlock": "@:types.NodeSuperBlock@:block",
+            "table": "@:types.NodeTable@:block"
+        },
+        "groupBy": {
+            "details": "@:search_result@:search_config.groupBy.label",
+            "group": "按文檔分組",
+            "label": "分組方案",
+            "noGroupBy": "不分組"
+        },
+        "method": {
+            "keyword": "關鍵字",
+            "label": "搜索方案",
+            "querySyntax": "查詢語法",
+            "regex": "正則表達式",
+            "sql": "SQL 語句"
+        },
+        "orderBy": {
+            "createdASC": "創建時間升序",
+            "createdDESC": "創建時間降序",
+            "details": "@:search_result@:search_config.orderBy.label",
+            "label": "排序方案",
+            "modifiedASC": "修改時間升序",
+            "modifiedDESC": "修改時間降序",
+            "sortByContent": "原文內容順序",
+            "sortByRankAsc": "相關度升序",
+            "sortByRankDesc": "相關度降序",
+            "type": "塊類型"
+        },
+        "path": {
+            "details": "在一個或多個目錄下進行搜索",
+            "label": "搜索目錄",
+            "placeholder": "全局搜索"
+        }
+    },
+    "search_description": {
+        "block_count": "塊數",
+        "doc_count": "文檔數"
+    },
+    "search_result": "@:search@:result",
+    "search_settings": "@:search@:settings",
+    "server": "服務",
+    "server_status": "@:server@:status",
+    "settings": "設置",
+    "siyuan": "思源",
+    "siyuan_server": "@:siyuan@:server",
+    "status": "狀態",
+    "success": "成功",
+    "test": "測試",
+    "theme": {
+        "dark": "深色@:theme.label",
+        "label": "主題",
+        "light": "淺色@:theme.label",
+        "system": "跟隨系統"
+    },
+    "time": "時間",
+    "token": "API Token",
+    "tree": "樹",
+    "types": {
+        "NodeAudio": "音頻塊",
+        "NodeBlockQueryEmbed": "嵌入塊",
+        "NodeBlockquote": "引述塊",
+        "NodeCodeBlock": "代碼塊",
+        "NodeDocument": "文檔塊",
+        "NodeHTMLBlock": "HTML塊",
+        "NodeHeading": "標題塊",
+        "NodeIFrame": "IFrame塊",
+        "NodeList": "列表塊",
+        "NodeListItem": "列表項",
+        "NodeMathBlock": "公式塊",
+        "NodeParagraph": "段落塊",
+        "NodeSuperBlock": "超級塊",
+        "NodeTable": "表格塊",
+        "NodeThematicBreak": "分割線",
+        "NodeVideo": "視頻塊",
+        "NodeWidget": "掛件塊"
+    },
+    "user": "用戶",
+    "user_settings": "@:user@:settings"
+}

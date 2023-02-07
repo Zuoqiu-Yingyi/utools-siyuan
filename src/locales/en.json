@@ -1,0 +1,142 @@
+{
+    "alias": "Alias",
+    "block": "Block",
+    "check_all": "Check All",
+    "client": "Client",
+    "conect_siyuan_client": "Connect @:siyuan @:client",
+    "conect_success": "Connect @:success",
+    "content": "Content",
+    "help": {
+        "auto_open": "Open the Drawer Automatically after the Page Loads",
+        "block_attrs_exist": "Exise Block Attributes",
+        "search_empty": "No Search Results",
+        "search_march": "Matching Search Result",
+        "server": "@:siyuan_server URL Origin",
+        "settings_empty": "No Saved Configurations",
+        "token": "Available in @:path.token"
+    },
+    "hostname": "IP Address {'|'} Domain Name {'|'} Host Name",
+    "label": {
+        "auto_open": "Auto Open",
+        "default_tab": "Default Tab",
+        "delete": "Delete",
+        "fold": "Fold",
+        "preview_focus": "Preview Focus",
+        "reset": "Reset",
+        "save": "Save",
+        "search_results_list": "@:search_result @:list",
+        "search_results_tree": "@:search_result @:tree",
+        "unfold": "Unfold",
+        "wrap_breadcrumb": "Breadcrumbs Wrap",
+        "wrap_breadcrumb_item": "Breadcrumb Items Wrap"
+    },
+    "language": "Language",
+    "list": "List",
+    "memo": "Memo",
+    "name": "Name",
+    "notebook": "Notebook",
+    "other": "Other",
+    "other_settings": "@:other @:settings",
+    "path": {
+        "about": "About",
+        "settings": "Settings",
+        "token": "@:path.settings > @:path.about > @:token"
+    },
+    "relevance": "Relevance",
+    "result": "Results",
+    "search": "Search",
+    "search_config": {
+        "block_types": {
+            "blockquote": "@:types.NodeBlockquote @:block",
+            "codeBlock": "@:types.NodeCodeBlock @:block",
+            "container": "Container Block",
+            "details": "Filter @:search_result Based on @:search_config.block_types.label",
+            "document": "@:types.NodeDocument @:block",
+            "embedBlock": "@:types.NodeBlockQueryEmbed @:block",
+            "heading": "@:types.NodeHeading @:block",
+            "htmlBlock": "@:types.NodeHTMLBlock @:block",
+            "label": "Block Type",
+            "leaf": "Leaf Block",
+            "list": "@:types.NodeList @:block",
+            "listItem": "@:types.NodeListItem",
+            "mathBlock": "@:types.NodeMathBlock @:block",
+            "paragraph": "@:types.NodeParagraph @:block",
+            "superBlock": "@:types.NodeSuperBlock @:block",
+            "table": "@:types.NodeTable @:block"
+        },
+        "groupBy": {
+            "details": "@:search_result @:search_config.groupBy.label",
+            "group": "Group by Document",
+            "label": "Grouping Scheme",
+            "noGroupBy": "No Grouping"
+        },
+        "method": {
+            "keyword": "Keyword",
+            "label": "@:search Scheme",
+            "querySyntax": "Query Syntax",
+            "regex": "Regular Expression",
+            "sql": "SQL Statement"
+        },
+        "orderBy": {
+            "createdASC": "Ascending by Creation Time",
+            "createdDESC": "Descending by Creation Time",
+            "details": "@:search_result @:search_config.orderBy.label",
+            "label": "Sorting Scheme",
+            "modifiedASC": "Ascending by Modification Time",
+            "modifiedDESC": "Descending by Modification Time",
+            "sortByContent": "Original Content Order",
+            "sortByRankAsc": "Ascending by Relevance",
+            "sortByRankDesc": "Descending by Relevance",
+            "type": "Block Type"
+        },
+        "path": {
+            "details": "Search in One or More Directories",
+            "label": "Directories Searched",
+            "placeholder": "Global Search"
+        }
+    },
+    "search_description": {
+        "block_count": "Number of Blocks",
+        "doc_count": "Number of Documents"
+    },
+    "search_result": "@:search @:result",
+    "search_settings": "@:search @:settings",
+    "server": "Server",
+    "server_status": "@:server @:status",
+    "settings": "Settings",
+    "siyuan": "SiYuan",
+    "siyuan_server": "@:siyuan @:server",
+    "status": "Status",
+    "success": "Success",
+    "test": "Test",
+    "theme": {
+        "dark": "Dark @:theme.label",
+        "label": "Theme",
+        "light": "Light @:theme.label",
+        "system": "Follow System"
+    },
+    "time": "Time",
+    "token": "API Token",
+    "tree": "Tree",
+    "types": {
+        "NodeAudio": "Audio",
+        "NodeBlockQueryEmbed": "Embed",
+        "NodeBlockquote": "Quote",
+        "NodeCodeBlock": "Code",
+        "NodeDocument": "Document",
+        "NodeHTMLBlock": "HTML",
+        "NodeHeading": "Heading",
+        "NodeIFrame": "IFrame",
+        "NodeList": "List",
+        "NodeListItem": "List Item",
+        "NodeMathBlock": "Formula",
+        "NodeParagraph": "Paragraph",
+        "NodeSuperBlock": "Super",
+        "NodeTable": "Table",
+        "NodeThematicBreak": "Horizontal Rule",
+        "NodeVideo": "Video",
+        "NodeWidget": "Widget"
+    },
+    "user": "User",
+    "user_settings": "@:user @:settings"
+}

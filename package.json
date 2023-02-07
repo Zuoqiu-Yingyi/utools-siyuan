@@ -10,9 +10,11 @@
   },
   "dependencies": {
     "utools-helper": "^2.1.0",
-    "vue": "^3.2.45"
+    "vue": "^3.2.45",
+    "vue-i18n": "^9.2.2"
   },
   "devDependencies": {
+    "@arco-design/web-vue": "^2.42.1",
     "@typescript-eslint/eslint-plugin": "^5.50.0",
     "@typescript-eslint/parser": "^5.50.0",
     "@vitejs/plugin-vue": "^4.0.0",

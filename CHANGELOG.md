@@ -6,3 +6,4 @@
 - 配置 vite 生产环境打包选项 | Config vite production build options.
 - 实现插件应用配置页面 | Implement plugin application configuration page.
 - 实现插件应用配置数据持久化 | Implement plugin application configuration data persistence.
+- 实现搜索功能 | Implement search feature.

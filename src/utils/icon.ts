@@ -12,9 +12,13 @@ class Icon {
      * @params: className: span 标签 class 属性
      * @return: 解码后字符串 / span 标签 HTML
      */
-    public static utf32Decode(hex: string, wrap = false, className = "icon"): string {
-        const icon = hex.length > 0 ? String.fromCodePoint(parseInt(hex, 16)) : "🖺";
-        return wrap ? `<span class="${className}">${icon}</span>` : icon;
+    public static utf32Decode(hex: string, wrap = false, className = "icon", defalutIcon = "📄"): string {
+        const icon = hex.length > 0 ? String.fromCodePoint(parseInt(hex, 16)) : defalutIcon;
+        return wrap ? Icon.char2dataURL(icon, className) : icon;
+    }
+
+    public static char2dataURL(char: string, className = "icon"): string {
+        return `data:image/svg+xml,${encodeURIComponent(`<svg class="${className}" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><text x="64" y="108" font-size="128" text-anchor="middle">${char}</text></svg>`)}`;
     }
 
     /**
@@ -24,8 +28,8 @@ class Icon {
      * @params: className: img 标签 class 属性
      * @return: img 标签 HTML
      */
-    public static icon2img(path: string, url: URL, className = "icon"): string {
-        return `<img class="${className}" src="${url.origin}/emojis/${path}" />`;
+    public static icon2img(path: string, url: URL): string {
+        return `${url.origin}/emojis/${path}`;
     }
 
     public static icon2emojis(icon: string, url: URL): string {
@@ -33,9 +37,13 @@ class Icon {
     }
 
     public static default = {
+        document: {
+            text: "📄",
+            wrap: Icon.char2dataURL("📄"),
+        },
         notebook: {
             text: "📔",
-            wrap: `<span class="icon">📔</span>`,
+            wrap: Icon.char2dataURL("📔"),
         },
     };
 }

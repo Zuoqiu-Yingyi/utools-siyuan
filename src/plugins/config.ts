@@ -6,8 +6,6 @@ import { TplFeatureMode } from "utools-helper/dist/template_plugin";
 import { IPlugin } from "./../types/utools";
 
 class Config implements IPlugin {
-    public static readonly ID = "B990E74D-44FC-4AB7-A62F-0227802EF719";
-
     public readonly code: string;
     public readonly mode = "none" as TplFeatureMode;
 

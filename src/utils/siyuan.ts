@@ -19,6 +19,8 @@ export {
 import { Ref, ShallowReactive } from "vue";
 import { Status } from "./status";
 import {
+    ID,
+
     Notebook,
     INotebooks,
 
@@ -38,7 +40,8 @@ import {
 
     IPayload_listDocsByPath,
     IResponse_listDocsByPath,
-    ID,
+
+    IResponse_getRecentDocs,
 } from "./../types/siyuan";
 
 /* 叶子块 */
@@ -290,6 +293,12 @@ class SiyuanClient {
     /* 列出笔记本信息 */
     public async lsNotebooks(): Promise<IResponse_lsNotebooks> {
         const response = await this._request("/api/notebook/lsNotebooks") as IResponse_lsNotebooks;
+        return response;
+    }
+
+    /* 查询最近打开的文档 */
+    public async getRecentDocs(): Promise<IResponse_getRecentDocs> {
+        const response = await this._request("/api/storage/getRecentDocs") as IResponse_getRecentDocs;
         return response;
     }
 

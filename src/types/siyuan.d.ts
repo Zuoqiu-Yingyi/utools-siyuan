@@ -202,3 +202,17 @@ export interface IResponse_listDocsByPath {
 	msg: string;
     data: Data_listDocsByPath;
 }
+
+// /api/storage/getRecentDocs
+
+export interface Data_getRecentDocs {
+	rootID: string;
+	icon: string;
+	title: string;
+}
+
+export interface IResponse_getRecentDocs {
+	code: number;
+	msg: string;
+    data: Data_getRecentDocs[];
+}

@@ -3,7 +3,7 @@
 import FileTreeSelect from "./FileTreeSelect.vue";
 
 import { inject, watch, ref, ShallowReactive, UnwrapNestedRefs, computed } from "vue";
-import { useI18n } from "vue-i18n";
+import { useI18n, I18n, VueI18nTranslation } from "vue-i18n";
 
 import { Notification } from "@arco-design/web-vue";
 
@@ -14,7 +14,9 @@ import { Method, GroupBy, OrderBy, Leaf, Container, washNotebooks, SiyuanClient 
 import { Theme, THEME_MOD } from "./../utils/theme";
 import { copy, merge } from "./../utils/object";
 
-const { t: $t } = useI18n();
+// const { t: $t } = useI18n();
+const i18n = inject("i18n") as I18n; // 国际化引擎
+const t = i18n.global.t as VueI18nTranslation;
 
 const config = inject("config") as IConfig; // 用户配置
 const notebooks = inject("notebooks") as ShallowReactive<INotebooks>; // 笔记本列表
@@ -28,15 +30,15 @@ async function testSiyuanServer(): Promise<void> {
         notebooks.list = washNotebooks(response.data.notebooks);
 
         Notification.success({
-            title: $t("conect_siyuan_client"),
-            content: $t("conect_success"),
+            title: t("conect_siyuan_client"),
+            content: t("conect_success"),
             closable: true, // 是否显示关闭按钮
             duration: 3000, // 显示持续时间
         });
     } catch (e) {
         console.warn(e);
         Notification.error({
-            title: $t("conect_siyuan_client"),
+            title: t("conect_siyuan_client"),
             content: String(e),
             closable: true,
             duration: 3000,
@@ -149,7 +151,7 @@ function onChange(key: string | number | Record<string, unknown> | (string | num
 
 <template>
     <a-layout class="panel">
-        <layout-header>
+        <a-layout-header>
             <a-space>
                 <a-select
                     size="small"
@@ -206,8 +208,8 @@ function onChange(key: string | number | Record<string, unknown> | (string | num
                     /></a-button>
                 </a-tooltip>
             </a-space>
-        </layout-header>
-        <layout-content>
+        </a-layout-header>
+        <a-layout-content>
             <a-form
                 class="form"
                 size="mini"
@@ -403,17 +405,6 @@ function onChange(key: string | number | Record<string, unknown> | (string | num
                     >
                         <template #header>{{ $t("other_settings") }}</template>
 
-                        <!-- 自动展开抽屉 -->
-                        <a-form-item :label="$t('label.auto_open')">
-                            <template #help>{{ $t("help.auto_open") }}</template>
-
-                            <a-switch
-                                size="small"
-                                type="round"
-                                v-model:model-value="config.other.open"
-                            />
-                        </a-form-item>
-
                         <!-- 界面语言 -->
                         <a-form-item :label="$t('language')">
                             <!-- 语言选择 -->
@@ -449,12 +440,16 @@ function onChange(key: string | number | Record<string, unknown> | (string | num
                     </a-collapse-item>
                 </a-collapse>
             </a-form>
-        </layout-content>
+        </a-layout-content>
     </a-layout>
 </template>
 <style scoped lang="less">
 .panel {
+    width: 100%;
+    height: 100%;
+
     overflow-y: auto !important;
+    background-color: var(--color-bg-1);
 }
 
 .collapse-item {

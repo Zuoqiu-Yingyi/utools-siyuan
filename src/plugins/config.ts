@@ -2,25 +2,48 @@ export {
     Config,
 };
 
-import { Plugin } from "utools-helper";
-import { Action, TplFeatureMode } from "utools-helper/dist/template_plugin";
+import { TplFeatureMode, Action } from "utools-helper/dist/template_plugin";
+import { IPlugin } from "./../types/utools";
 
-class Config implements Plugin {
+class Config extends Object implements IPlugin {
     static readonly ID = "B990E74D-44FC-4AB7-A62F-0227802EF719";
 
-    mode = "doc" as TplFeatureMode;
     code = "config";
-    args = {
-        // 索引集合
-        // indexes: require('./indexes.json')
-        indexes: [
-            {
-                t: '这是标题',
-                d: '这是描述',
-                p: 'doc/xxx.html', //页面, 只能是相对路径
-            }
-        ],
-        // 子输入框为空时的占位符，默认为字符串"搜索"
-        placeholder: "搜索",
-    };
+    mode = "none" as TplFeatureMode;
+
+    constructor() {
+        super();
+    }
+
+    enter(action: Action): void {
+        // action = { code, type, payload }
+        // REF [uTools API | uTools](https://u.tools/docs/developer/api.html#createbrowserwindow-url-options-callback)
+        const ubWindow = utools.createBrowserWindow(
+            './index.html',
+            {},
+            () => {
+                // 显示
+                ubWindow.show()
+
+                // 置顶
+                // ubWindow.setAlwaysOnTop(true)
+
+                // 窗口全屏
+                // ubWindow.setFullScreen(true)
+
+                // 向子窗口传递数据
+                // ubWindow.webContents.send('ping')
+                // require('electron').ipcRenderer.sendTo(ubWindow.webContents.id, 'ping')
+
+                // 执行脚本
+                // ubWindow.executeJavaScript('fetch("https://jsonplaceholder.typicode.com/users/1").then(resp => resp.json())')
+                //     .then((result) => {
+                //         console.log(result) // Will be the JSON object from the fetch call
+                //     })
+            })
+
+        window.utools.hideMainWindow();
+        // do some thing
+        window.utools.outPlugin();
+    }
 }

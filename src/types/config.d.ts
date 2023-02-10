@@ -11,19 +11,7 @@ export interface IServer {
 export interface IConfig {
     server: IServer,
     search: Omit<IPayload_fullTextSearchBlock, 'query'>, // 省略 query 属性
-    render: {
-        breadcrumb: {
-            wrap: boolean,
-            item: {
-                wrap: boolean,
-            },
-        },
-        tree: {
-            fold: boolean,
-        },
-    },
     other: {
-        open: boolean, // 是否自动打开抽屉
         language: ILanguage,
         languages: ILanguage[],
     },

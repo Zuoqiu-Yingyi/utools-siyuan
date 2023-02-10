@@ -1,24 +1,27 @@
 <script setup lang="ts">
 import { inject, ShallowReactive, shallowRef } from "vue";
-import { useI18n } from "vue-i18n";
+import { useI18n, I18n, VueI18nTranslation } from "vue-i18n";
+
 import { Notification, TreeNodeData } from "@arco-design/web-vue";
 
 import { INotebooks, IPayload_listDocsByPath } from "./../types/siyuan";
 import { IConfig } from "./../types/config";
+import { TreeNode } from "./../types/tree";
 
 import { updateNotebooks, SiyuanClient } from "./../utils/siyuan";
 import { DocTree } from "./../utils/doctree";
 import { SortMode } from "./../utils/siyuan";
-import { TreeNode } from "./../utils/tree";
 
-const { t: $t } = useI18n();
+// const { t: $t } = useI18n();
+const i18n = inject("i18n") as I18n; // 国际化引擎
+const t = i18n.global.t as VueI18nTranslation;
 
 const config = inject("config") as IConfig; // 用户配置
 const client = inject("client") as InstanceType<typeof SiyuanClient>; // 客户端
 const notebooks = inject("notebooks") as ShallowReactive<INotebooks>; // 笔记本列表
 const expanded_keys = shallowRef<string[] | undefined>([]); // 展开的节点
 
-const doctree = new DocTree(notebooks); // 文档树对象
+const doctree = new DocTree(notebooks, t); // 文档树对象
 
 /* 动态加载文档树 */
 async function onLoadMore(node: TreeNode): Promise<void> {
@@ -43,7 +46,7 @@ async function onLoadMore(node: TreeNode): Promise<void> {
     } catch (error) {
         console.warn(error);
         Notification.error({
-            title: $t("search"),
+            title: t("search"),
             content: String(error),
             closable: true,
             duration: 3000,
@@ -79,7 +82,7 @@ async function onsearch(k: string): Promise<void> {
         } catch (error) {
             console.warn(error);
             Notification.error({
-                title: $t("search"),
+                title: t("search"),
                 content: String(error),
                 closable: true,
                 duration: 3000,

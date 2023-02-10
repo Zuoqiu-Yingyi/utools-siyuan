@@ -2,21 +2,20 @@ export {
     Config,
 };
 
-import { TplFeatureMode, Action } from "utools-helper/dist/template_plugin";
+import { TplFeatureMode } from "utools-helper/dist/template_plugin";
 import { IPlugin } from "./../types/utools";
 
-class Config extends Object implements IPlugin {
-    static readonly ID = "B990E74D-44FC-4AB7-A62F-0227802EF719";
+class Config implements IPlugin {
+    public static readonly ID = "B990E74D-44FC-4AB7-A62F-0227802EF719";
 
-    code = "config";
-    mode = "none" as TplFeatureMode;
+    public readonly code: string;
+    public readonly mode = "none" as TplFeatureMode;
 
-    constructor() {
-        super();
+    constructor(code: string) {
+        this.code = code;
     }
 
-    enter(action: Action): void {
-        // action = { code, type, payload }
+    public enter(): void {
         // REF [uTools API | uTools](https://u.tools/docs/developer/api.html#createbrowserwindow-url-options-callback)
         const ubWindow = utools.createBrowserWindow(
             './index.html',
@@ -24,6 +23,12 @@ class Config extends Object implements IPlugin {
             () => {
                 // 显示
                 ubWindow.show()
+
+                // 隐藏主窗口
+                utools.hideMainWindow();
+
+                // 退出插件
+                utools.outPlugin();
 
                 // 置顶
                 // ubWindow.setAlwaysOnTop(true)
@@ -41,9 +46,5 @@ class Config extends Object implements IPlugin {
                 //         console.log(result) // Will be the JSON object from the fetch call
                 //     })
             })
-
-        window.utools.hideMainWindow();
-        // do some thing
-        window.utools.outPlugin();
     }
 }

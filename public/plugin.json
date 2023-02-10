@@ -5,8 +5,8 @@
     "version": "0.0.0",
     "author": "左丘颖逸",
     "homepage": "https://github.com/Zuoqiu-Yingyi/utools-siyuan",
-    "logo": "siyuan-128.png",
-    "preload": "preload.js",
+    "logo": "./siyuan-128.png",
+    "preload": "./preload.js",
     "features": [
         {
             "code": "config",
@@ -16,6 +16,14 @@
                 "思源配置",
                 "思源笔记设置",
                 "思源笔记配置"
+            ]
+        },
+        {
+            "code": "search",
+            "explain": "在思源笔记中搜索内容",
+            "cmds": [
+                "思源搜索",
+                "思源笔记搜索"
             ]
         }
     ],

@@ -11,7 +11,7 @@ import { Status } from "./utils/status";
 import { mapLabel } from "./utils/language";
 import { Theme } from "./utils/theme";
 import { Icon } from "./utils/icon";
-import { copy } from "./utils/object";
+import { copy, merge } from "./utils/object";
 
 /* 国际化 */
 const i18n = inject("i18n") as I18n; // 国际化引擎
@@ -98,6 +98,28 @@ const configs_entries = computed(() => Array.from(configs.entries()));
 
 /* 生产环境 */
 if (import.meta.env.PROD) {
+    /* 从储存中读取用户配置列表 */
+    const storage = utools.dbStorage.getItem(import.meta.env.VITE_STORAGE_KEY);
+    if (storage) {
+        /* 加载当前配置 */
+        merge(config, storage.config ?? {});
+
+        /* 加载配置列表 */
+        configs.clear();
+        Object.values(storage.configs as Record<number, [string, IConfig]>).forEach(([key, value]) => {
+            configs.set(key, value);
+        });
+    }
+
+    /* 保存用户配置列表 */
+    watch(configs_entries, entries => {
+        utools.dbStorage.setItem(
+            import.meta.env.VITE_STORAGE_KEY,
+            {
+                config: copy(config),
+                configs: copy(entries),
+            });
+    });
 }
 
 const status = ref(Status.normal); // 连接状态
@@ -134,6 +156,7 @@ watch(
 watch(
     () => config.other.language.tag,
     tag => {
+        i18n.global.locale = tag;
         config.other.language.label = mapLabel(tag);
     },
     {
@@ -160,4 +183,6 @@ provide("theme", theme);
     <Settings />
 </template>
 
-<style scoped lang="less"></style>
+<style scoped lang="less">
+
+</style>

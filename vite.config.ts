@@ -12,6 +12,9 @@ export default defineConfig({
                 preload: './src/preload.ts',
             },
             output: {
+                // format: 'iife',
+                format: 'cjs',
+
                 // entryFileNames: '[name].js',
                 entryFileNames: chunkInfo => {
                     switch (chunkInfo.name) {

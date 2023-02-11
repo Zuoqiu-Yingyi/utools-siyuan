@@ -34,7 +34,7 @@ utools 插件 - 思源笔记
 
 ### 手动安装
 
-在 [Releases](https://github.com/Zuoqiu-Yingyi/utools-siyuan/releases) 中下载最新的发行版安装包 `思源笔记插件-<版本号>.upx`, 之后将文件拖动到 utools 输入框中即可安装
+在 [Releases](https://github.com/Zuoqiu-Yingyi/utools-siyuan/releases) 中下载最新的发行版安装包 `utools-siyuan-v<版本号>.upx`, 之后将文件拖动到 utools 输入框中即可安装
 
 ## 功能
 

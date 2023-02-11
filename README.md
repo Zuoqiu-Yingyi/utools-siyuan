@@ -20,11 +20,11 @@ utools 插件 - 思源笔记
 
 ### 设置界面
 
-![设置界面](image/README/1676104391486.jpg)
+![设置界面](./image/README/1676104391486.jpg)
 
 ### 搜索界面
 
-![搜索界面](image/README/1676104446194.png)
+![搜索界面](./image/README/1676104446194.png)
 
 ## 安装
 
@@ -52,7 +52,7 @@ utools 插件 - 思源笔记
   - `搜索设置`: 插件搜索功能相关设置项
     - `搜索方案`: 插件使用的搜索方案
       - `关键字`: **默认选项**, 多个关键字使用空格分隔
-      - `查询语法`: 详情请参考 [SQLite FTS5](https://www.sqlite.org/fts5.html) 与 [请从这里开始/搜索进阶/查询语法](siyuan://blocks/20220415190432-r3xqn3r)
+      - `查询语法`: 详情请参考 [SQLite FTS5](https://www.sqlite.org/fts5.html) 与 [请从这里开始/搜索进阶/查询语法](https://publish.zuoqiu.space/widgets/url-scheme/?location=siyuan%3A%2F%2Fblocks%2F20220213230830-g1amobi)
       - `正则表达式`: 使用正则表达式匹配块的内容
       - `SQL 语句`: 使用 SQL 语句查询数据库
     - `分组方案`: 搜索结果分组方案

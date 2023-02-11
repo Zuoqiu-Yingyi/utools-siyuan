@@ -13,3 +13,4 @@
 - 优化搜索功能 | Optimize search feature.
 - 搜索输入框为空时显示最近打开的文档 | Display the most recently opened document when the search input box is empty.
 - 修复搜索目录树选择器图标问题 | Fix search directory tree selector icon problem.
+- 完善项目文档 | Improve project documentation.

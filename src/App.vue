@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Settings from "./components/Settings.vue";
 import { ref, provide, reactive, unref, watch, inject, shallowReactive, computed } from "vue";
-import { I18n } from "vue-i18n";
+import { I18n, VueI18nTranslation } from "vue-i18n";
 
 import { IConfig, IStorage } from "./types/config";
 import { INotebooks } from "./types/siyuan";
@@ -10,13 +10,14 @@ import { SiyuanClient } from "./utils/siyuan";
 import { Status } from "./utils/status";
 import { mapLabel } from "./utils/language";
 import { Theme } from "./utils/theme";
-import { Icon } from "./utils/icon";
+import { IconDOM } from "./utils/icon";
 import { copy, merge } from "./utils/object";
 
 import config_default from "./config/default";
 
 /* 国际化 */
 const i18n = inject("i18n") as I18n; // 国际化引擎
+const t = i18n.global.t as VueI18nTranslation;
 
 /* 笔记本列表 */
 const notebooks = shallowReactive<INotebooks>({
@@ -31,7 +32,7 @@ watch(
         /* 重建映射 */
         notebooks.map.clear();
         list.forEach(notebook => {
-            notebook.icon = Icon.icon2emojis(notebook.icon, client.url);
+            notebook.icon = IconDOM.icon2emojis(notebook.icon, client.url);
             notebooks.map.set(notebook.id, notebook);
         });
     },
@@ -64,13 +65,10 @@ if (import.meta.env.PROD) {
 
     /* 保存用户配置列表 */
     watch(configs_entries, entries => {
-        utools.dbStorage.setItem(
-            import.meta.env.VITE_STORAGE_KEY,
-            {
-                config: copy(config),
-                configs: copy(entries),
-            } as IStorage,
-        );
+        utools.dbStorage.setItem(import.meta.env.VITE_STORAGE_KEY, {
+            config: copy(config),
+            configs: copy(entries),
+        } as IStorage);
     });
 }
 
@@ -110,6 +108,8 @@ watch(
     tag => {
         i18n.global.locale = tag;
         config.other.language.label = mapLabel(tag);
+        document.title = t("settings");
+        document.documentElement.lang = tag;
     },
     {
         immediate: true, // 立即执行一次
@@ -135,6 +135,4 @@ provide("theme", theme);
     <Settings />
 </template>
 
-<style scoped lang="less">
-
-</style>
+<style scoped lang="less"></style>

@@ -86,7 +86,8 @@ class Search extends Object implements IPlugin {
         this.update();
 
         /* 设置 placeholder */
-        this.placeholder = `[${this._i18n.global.t(`search_config.method.${Method[this._config.search.method]}`)
+        this.placeholder = `${this._i18n.global.t(`search_config.method.label`)
+            }: [${this._i18n.global.t(`search_config.method.${Method[this._config.search.method]}`)
             }] - [${this._i18n.global.t(`search_config.groupBy.${GroupBy[this._config.search.groupBy]}`)
             }] - [${this._i18n.global.t(`search_config.orderBy.${OrderBy[this._config.search.orderBy]}`)
             }]`
@@ -175,6 +176,12 @@ class Search extends Object implements IPlugin {
 
     // 子输入框内容变化时被调用 可选 (未设置则无搜索)
     async search(action: Action, searchWord: string, callbackSetList: CallbackSetList) {
+        /* 搜索内容为空 */
+        if (searchWord.length === 0) {
+            this.enter(action, callbackSetList);
+            return;
+        }
+
         const payload = Object.assign({}, this._config?.search, {
             query: searchWord,
         });

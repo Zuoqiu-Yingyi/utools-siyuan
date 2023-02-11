@@ -10,3 +10,4 @@
 - 将 vite 生产环境打包选项设置为 `commonjs` | Set vite production build options to `commonjs`.
 - `preload.js` 与 `index.html` 分别构建 | Build `preload.js` and `index.html` separately.
 - 优化搜索功能 | Optimize search feature.
+- 搜索输入框为空时显示最近打开的文档 | Display the most recently opened document when the search input box is empty.

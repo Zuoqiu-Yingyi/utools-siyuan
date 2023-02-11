@@ -1,5 +1,6 @@
 # 更改日志 | CHANGE LOG
 
+## v0.1.0/2023-02-11
 - 初始化项目 | Init project
 - 添加项目依赖 `utools-api-types` 与 `utools-helper` | Add dependencies `utools-api-types` and `utools-helper`.
 - 创建功能 `config` | Create a feature `config`.
@@ -11,3 +12,4 @@
 - `preload.js` 与 `index.html` 分别构建 | Build `preload.js` and `index.html` separately.
 - 优化搜索功能 | Optimize search feature.
 - 搜索输入框为空时显示最近打开的文档 | Display the most recently opened document when the search input box is empty.
+- 修复搜索目录树选择器图标问题 | Fix search directory tree selector icon problem.

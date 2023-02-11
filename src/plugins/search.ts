@@ -26,7 +26,7 @@ import { IStorage } from "./../types/config";
 
 import { init } from "./../utils/language";
 import { merge } from "./../utils/object";
-import { Icon } from "./../utils/icon";
+import { IconDataURL } from "./../utils/icon";
 import { Status } from "./../utils/status";
 import {
     BlockType,
@@ -48,7 +48,7 @@ class Search extends Object implements IPlugin {
     protected _i18n = init();
     protected _dom = document.createElement('span');
     protected _status = ref(Status.normal);;
-    protected _message = ref("");;
+    protected _message = ref("");
     protected _config = config_default;
     protected _client = new SiyuanClient(new URL(this._config.server.url), this._config.server.token, this._status, this._message);
     protected _notebooks: ShallowReactive<INotebooks>;
@@ -76,7 +76,7 @@ class Search extends Object implements IPlugin {
                 /* 重建映射 */
                 this._notebooks.map.clear();
                 list.forEach(notebook => {
-                    notebook.icon = Icon.icon2emojis(notebook.icon, this._client!.url);
+                    notebook.icon = IconDataURL.icon2emojis(notebook.icon, this._client!.url);
                     this._notebooks.map.set(notebook.id, notebook);
                 });
             },
@@ -90,7 +90,7 @@ class Search extends Object implements IPlugin {
             }: [${this._i18n.global.t(`search_config.method.${Method[this._config.search.method]}`)
             }] - [${this._i18n.global.t(`search_config.groupBy.${GroupBy[this._config.search.groupBy]}`)
             }] - [${this._i18n.global.t(`search_config.orderBy.${OrderBy[this._config.search.orderBy]}`)
-            }]`
+            }]`;
     }
 
     /* 更新配置 */
@@ -99,7 +99,7 @@ class Search extends Object implements IPlugin {
         if (storage) {
             merge(this._config, storage.config);
             this._client.update(new URL(this._config.server.url), this._config.server.token);
-            this._i18n.global.locale = this._config?.other.language.tag;
+            this._i18n.global.locale = this._config.other.language.tag;
         }
     }
 
@@ -126,11 +126,11 @@ class Search extends Object implements IPlugin {
                     icon: (() => {
                         switch (block.type) {
                             case BlockType.NodeList:
-                                return Icon.default.block[block.type][block.subType as unknown as NodeListSubType].wrap;
+                                return IconDataURL.default.block[block.type][block.subType as unknown as NodeListSubType].wrap;
                             case BlockType.NodeHeading:
-                                return Icon.default.block[block.type][block.subType as unknown as NodeHeadingSubType].wrap;
+                                return IconDataURL.default.block[block.type][block.subType as unknown as NodeHeadingSubType].wrap;
                             default:
-                                return Icon.default.block[block.type].wrap;
+                                return IconDataURL.default.block[block.type].wrap;
                         }
                     })(),
                     url: url.href,
@@ -158,7 +158,7 @@ class Search extends Object implements IPlugin {
                 return {
                     title: doc.title,
                     description: url.href,
-                    icon: Icon.icon2emojis(doc.icon, this._client!.url),
+                    icon: IconDataURL.icon2emojis(doc.icon, this._client!.url),
                     url: url.href,
                 } as CallbackListItem;
             }),
@@ -182,7 +182,7 @@ class Search extends Object implements IPlugin {
             return;
         }
 
-        const payload = Object.assign({}, this._config?.search, {
+        const payload = Object.assign({}, this._config.search, {
             query: searchWord,
         });
 

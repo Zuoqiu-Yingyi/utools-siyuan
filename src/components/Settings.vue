@@ -426,11 +426,11 @@ function onChange(key: string | number | Record<string, unknown> | (string | num
                         >
                             <!-- 主题模式选择 -->
                             <a-select v-model:model-value="theme.mode">
-                                <a-option :value="THEME_MOD.dark">
-                                    {{ $t("theme.dark") }}
-                                </a-option>
                                 <a-option :value="THEME_MOD.light">
                                     {{ $t("theme.light") }}
+                                </a-option>
+                                <a-option :value="THEME_MOD.dark">
+                                    {{ $t("theme.dark") }}
                                 </a-option>
                                 <a-option :value="THEME_MOD.system">
                                     {{ $t("theme.system") }}

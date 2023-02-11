@@ -9,7 +9,7 @@ import { VueI18nTranslation } from "vue-i18n";
 import { TreeNode } from "./../types/tree";
 import { Data_searchDocs, ID, INotebooks, Notebook, File } from "./../types/siyuan";
 
-import { Icon } from "./icon";
+import { IconDOM } from "./icon";
 
 enum Mode {
     default, // 默认模式 (从笔记本一级开始, 逐级展开&加载文档树并选择)
@@ -65,7 +65,7 @@ class DocTree {
                 key: `${node.key}/${file.id}`,
                 // title: `${node.title}/${file.name.substring(0, file.name.length - 3)}`,
                 title: file.name.substring(0, file.name.length - 3),
-                icon: () => [h("span", { innerHTML: Icon.icon2emojis(file.icon, url) })],
+                icon: () => [h("span", { innerHTML: IconDOM.icon2emojis(file.icon, url) })],
                 isLeaf: file.subFileCount === 0,
             };
             children.push(child);

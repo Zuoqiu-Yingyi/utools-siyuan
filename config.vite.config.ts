@@ -24,7 +24,8 @@ export default defineConfig({
                             src: [
                                 "./README.md",
                                 "./CHANGELOG.md",
-                                "LICENSE",
+                                "./LICENSE",
+                                "./image/",
                             ],
                             dest: [
                                 "./dist/",

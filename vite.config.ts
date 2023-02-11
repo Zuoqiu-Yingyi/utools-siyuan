@@ -8,7 +8,6 @@ export default defineConfig({
     build: {
         rollupOptions: {
             input: {
-                main: './index.html',
                 preload: './src/preload.ts',
             },
             output: {
@@ -25,7 +24,7 @@ export default defineConfig({
                             return 'assets/[name]-[hash].js';
                     }
                 },
-            }
+            },
         },
     },
-})
+});

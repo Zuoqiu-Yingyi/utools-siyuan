@@ -4,7 +4,6 @@ export {
 
 import {
     ref,
-    Ref,
     watch,
     shallowReactive,
     ShallowReactive,
@@ -23,25 +22,35 @@ import {
     Block_fullTextSearchBlock,
 } from "./../types/siyuan";
 import { IPlugin } from "./../types/utools";
-import { IConfig } from "./../types/config";
+import { IStorage } from "./../types/config";
 
+import { init } from "./../utils/language";
+import { merge } from "./../utils/object";
 import { Icon } from "./../utils/icon";
 import { Status } from "./../utils/status";
 import {
+    BlockType,
+    GroupBy,
+    Method,
+    NodeHeadingSubType,
+    NodeListSubType,
+    OrderBy,
     SiyuanClient,
     updateNotebooks,
 } from "./../utils/siyuan";
 
+import config_default from "./../config/default";
 
 class Search extends Object implements IPlugin {
     public readonly code: string;
     public readonly mode = "list" as TplFeatureMode;
 
+    protected _i18n = init();
     protected _dom = document.createElement('span');
-    protected _config: IConfig | undefined;
-    protected _client: InstanceType<typeof SiyuanClient> | undefined;
-    protected _status: Ref<Status>;
-    protected _message: Ref<string>;
+    protected _status = ref(Status.normal);;
+    protected _message = ref("");;
+    protected _config = config_default;
+    protected _client = new SiyuanClient(new URL(this._config.server.url), this._config.server.token, this._status, this._message);
     protected _notebooks: ShallowReactive<INotebooks>;
 
     // 子输入框为空时的占位符，默认为字符串"搜索"
@@ -50,8 +59,6 @@ class Search extends Object implements IPlugin {
     constructor(code: string) {
         super();
         this.code = code;
-        this._status = ref(Status.normal);
-        this._message = ref("");
         this._notebooks = shallowReactive<INotebooks>({
             list: [],
             map: new Map(),
@@ -74,6 +81,25 @@ class Search extends Object implements IPlugin {
                 });
             },
         );
+
+        /* 读取用户配置 */
+        this.update();
+
+        /* 设置 placeholder */
+        this.placeholder = `[${this._i18n.global.t(`search_config.method.${Method[this._config.search.method]}`)
+            }] - [${this._i18n.global.t(`search_config.groupBy.${GroupBy[this._config.search.groupBy]}`)
+            }] - [${this._i18n.global.t(`search_config.orderBy.${OrderBy[this._config.search.orderBy]}`)
+            }]`
+    }
+
+    /* 更新配置 */
+    protected update() {
+        const storage = utools.dbStorage.getItem(import.meta.env.VITE_STORAGE_KEY) as IStorage | void;
+        if (storage) {
+            merge(this._config, storage.config);
+            this._client.update(new URL(this._config.server.url), this._config.server.token);
+            this._i18n.global.locale = this._config?.other.language.tag;
+        }
     }
 
     /* 构造 siyuan url */
@@ -96,8 +122,16 @@ class Search extends Object implements IPlugin {
                 list.push({
                     title: (this._dom.innerHTML = block.content.replaceAll('<mark>', '「').replaceAll('</mark>', '」'), this._dom).textContent || block.content,
                     description: `${notebook?.name ?? ""}${block.hPath}`,
-                    // TODO 设置块类型 icon
-                    icon: notebook?.icon ?? Icon.default.notebook.wrap,
+                    icon: (() => {
+                        switch (block.type) {
+                            case BlockType.NodeList:
+                                return Icon.default.block[block.type][block.subType as unknown as NodeListSubType].wrap;
+                            case BlockType.NodeHeading:
+                                return Icon.default.block[block.type][block.subType as unknown as NodeHeadingSubType].wrap;
+                            default:
+                                return Icon.default.block[block.type].wrap;
+                        }
+                    })(),
                     url: url.href,
                 });
             }
@@ -108,31 +142,26 @@ class Search extends Object implements IPlugin {
     // 进入插件应用时调用（可选）
     async enter(action: Action, callbackSetList: CallbackSetList): Promise<void> {
         /* 读取用户配置 */
-        const storage = utools.dbStorage.getItem(import.meta.env.VITE_STORAGE_KEY);
-        if (storage) {
-            this._config = storage.config;
-            this._client = new SiyuanClient(new URL(this._config!.server.url), this._config!.server.token, this._status, this._message);
-            // TODO 根据配置选项设置 placeholder
+        this.update();
 
-            /* 更新笔记本列表 */
-            await updateNotebooks(this._notebooks, this._client);
+        /* 更新笔记本列表 */
+        await updateNotebooks(this._notebooks, this._client);
 
-            /* 查询最近打开的文档 */
-            const response = await this._client.getRecentDocs();
+        /* 查询最近打开的文档 */
+        const response = await this._client.getRecentDocs();
 
-            // 如果进入插件应用就要显示列表数据
-            callbackSetList(
-                response.data.map(doc => {
-                    const url = this.buildSiyuanURL(doc.rootID);
-                    return {
-                        title: doc.title,
-                        description: url.href,
-                        icon: Icon.icon2emojis(doc.icon, this._client!.url),
-                        url: url.href,
-                    } as CallbackListItem;
-                }),
-            )
-        }
+        // 如果进入插件应用就要显示列表数据
+        callbackSetList(
+            response.data.map(doc => {
+                const url = this.buildSiyuanURL(doc.rootID);
+                return {
+                    title: doc.title,
+                    description: url.href,
+                    icon: Icon.icon2emojis(doc.icon, this._client!.url),
+                    url: url.href,
+                } as CallbackListItem;
+            }),
+        )
 
         // callbackSetList([
         //     {
@@ -150,7 +179,7 @@ class Search extends Object implements IPlugin {
             query: searchWord,
         });
 
-        const response = await this._client?.fullTextSearchBlock(payload);
+        const response = await this._client.fullTextSearchBlock(payload);
 
         // 执行 callbackSetList 显示出来
         callbackSetList(this.blocks2list(response?.data.blocks ?? []));

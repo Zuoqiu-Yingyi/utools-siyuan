@@ -17,7 +17,12 @@ export interface IConfig {
     },
 }
 
-interface ILanguage {
+export interface ILanguage {
     tag: string | WritableComputedRef<string>, // 语言标识
     label: string, // 语言名称
+}
+
+export interface IStorage { 
+    config: IConfig,
+    configs: [string, IConfig][],
 }

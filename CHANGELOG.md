@@ -9,3 +9,4 @@
 - 实现搜索功能 | Implement search feature.
 - 将 vite 生产环境打包选项设置为 `commonjs` | Set vite production build options to `commonjs`.
 - `preload.js` 与 `index.html` 分别构建 | Build `preload.js` and `index.html` separately.
+- 优化搜索功能 | Optimize search feature.

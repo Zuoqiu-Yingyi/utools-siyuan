@@ -3,15 +3,17 @@ import Settings from "./components/Settings.vue";
 import { ref, provide, reactive, unref, watch, inject, shallowReactive, computed } from "vue";
 import { I18n } from "vue-i18n";
 
-import { IConfig } from "./types/config";
+import { IConfig, IStorage } from "./types/config";
 import { INotebooks } from "./types/siyuan";
 
-import { GroupBy, Method, OrderBy, SiyuanClient } from "./utils/siyuan";
+import { SiyuanClient } from "./utils/siyuan";
 import { Status } from "./utils/status";
 import { mapLabel } from "./utils/language";
 import { Theme } from "./utils/theme";
 import { Icon } from "./utils/icon";
 import { copy, merge } from "./utils/object";
+
+import config_default from "./config/default";
 
 /* 国际化 */
 const i18n = inject("i18n") as I18n; // 国际化引擎
@@ -36,59 +38,8 @@ watch(
 );
 provide("notebooks", notebooks);
 
-/* 用户默认配置 */
-const config_default: IConfig = {
-    server: {
-        protocol: "http",
-        hostname: "localhost",
-        port: 6806,
-        token: import.meta.env.VITE_TEST_TOKEN ?? "",
-        url: "http://localhost:6806",
-    },
-    search: {
-        groupBy: GroupBy.group,
-        method: Method.keyword,
-        orderBy: OrderBy.sortByRankDesc,
-        paths: [],
-        types: {
-            heading: true,
-            paragraph: true,
-            mathBlock: true,
-            table: true,
-            codeBlock: true,
-            htmlBlock: true,
-            embedBlock: true,
-
-            document: true,
-            superBlock: false,
-            blockquote: false,
-            list: false,
-            listItem: true,
-        },
-    },
-    other: {
-        language: {
-            tag: unref(i18n.global.locale),
-            label: "",
-        },
-        languages: [
-            {
-                tag: "en",
-                label: "English",
-            },
-            {
-                tag: "zh-Hans",
-                label: "简体中文",
-            },
-            {
-                tag: "zh-Hant",
-                label: "繁體中文",
-            },
-        ],
-    },
-};
-
 /* 用户配置 */
+config_default.other.language.tag = unref(i18n.global.locale);
 const config: IConfig = reactive(copy(config_default));
 config.other.language.tag = i18n.global.locale;
 
@@ -99,7 +50,7 @@ const configs_entries = computed(() => Array.from(configs.entries()));
 /* 生产环境 */
 if (import.meta.env.PROD) {
     /* 从储存中读取用户配置列表 */
-    const storage = utools.dbStorage.getItem(import.meta.env.VITE_STORAGE_KEY);
+    const storage = utools.dbStorage.getItem(import.meta.env.VITE_STORAGE_KEY) as IStorage | undefined;
     if (storage) {
         /* 加载当前配置 */
         merge(config, storage.config ?? {});
@@ -118,7 +69,8 @@ if (import.meta.env.PROD) {
             {
                 config: copy(config),
                 configs: copy(entries),
-            });
+            } as IStorage,
+        );
     });
 }
 

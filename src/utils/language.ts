@@ -1,3 +1,33 @@
+import {
+    createI18n,
+    I18n,
+} from "vue-i18n";
+
+/* 语言包 */
+import en from "./../locales/en.json";
+import zh_Hans from "./../locales/zh-Hans.json";
+import zh_Hant from "./../locales/zh-Hant.json";
+
+/* i10n 引擎初始化 */
+export function init() {
+    const messages = {
+        "en": en,
+        "zh-Hans": zh_Hans,
+        "zh-Hant": zh_Hant,
+    };
+
+    const locale = mapLocal(navigator.language, messages);
+    const fallbackLocale = "en";
+
+    const i18n = createI18n({
+        locale, // set locale
+        fallbackLocale, // set fallback locale
+        messages,
+    });
+
+    return i18n;
+}
+
 /* 映射地区 */
 export function mapLocal(local: string, accept: string[] | object): string {
     switch (true) {

@@ -4,6 +4,8 @@ export {
     Container,
     BlockType,
     BlockSubType,
+    NodeListSubType,
+    NodeHeadingSubType,
     Method,
     GroupBy,
     OrderBy,
@@ -100,16 +102,31 @@ enum BlockType {
 
 /* 块级节点子类型 */
 enum BlockSubType {
+    u = "u", // <icon-unordered-list />
+    o = "o", // <icon-ordered-list />
+    t = "t", // <icon-select-all />
+
     h1 = "h1", // <icon-h1 />
     h2 = "h2", // <icon-h2 />
     h3 = "h3", // <icon-h3 />
     h4 = "h4", // <icon-h4 />
     h5 = "h5", // <icon-h5 />
     h6 = "h6", // <icon-h6 />
-    u = "u", // <icon-unordered-list />
-    o = "o", // <icon-ordered-list />
-    t = "t", // <icon-select-all />
+
     none = "",
+}
+enum NodeListSubType {
+    u = BlockSubType.u,
+    o = BlockSubType.o,
+    t = BlockSubType.t,
+}
+enum NodeHeadingSubType {
+    h1 = BlockSubType.h1,
+    h2 = BlockSubType.h2,
+    h3 = BlockSubType.h3,
+    h4 = BlockSubType.h4,
+    h5 = BlockSubType.h5,
+    h6 = BlockSubType.h6,
 }
 
 /**

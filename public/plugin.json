@@ -2,7 +2,7 @@
     "name": "D8389333-C09E-456C-B350-BB91FC04E452",
     "pluginName": "思源笔记插件",
     "description": "快速搜索思源笔记内容",
-    "version": "0.0.0",
+    "version": "0.1.0",
     "author": "左丘颖逸",
     "homepage": "https://github.com/Zuoqiu-Yingyi/utools-siyuan",
     "logo": "./siyuan-128.png",
@@ -16,8 +16,9 @@
                 "思源插件配置",
                 "思源笔记插件设置",
                 "思源笔记插件配置",
-                "config",
-                "configuration"
+                "sy-setting",
+                "SiYuan Note Plugin Settings",
+                "SiYuan Note Plugin Configuration"
             ]
         },
         {
@@ -27,7 +28,8 @@
                 "思源搜索",
                 "思源笔记搜索",
                 "sy",
-                "siyuan"
+                "sy-search",
+                "SiYuan Note Search"
             ]
         }
     ],

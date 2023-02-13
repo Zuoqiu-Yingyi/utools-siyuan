@@ -28,13 +28,15 @@ utools 插件 - 思源笔记
 
 ## 安装
 
-### 自动安装
-
-本插件现已发布至 utools 插件应用市场, 在市场中搜索 `思源笔记` 即可安装
-
 ### 手动安装
 
 在 [Releases](https://github.com/Zuoqiu-Yingyi/utools-siyuan/releases) 中下载最新的发行版安装包 `utools-siyuan-v<版本号>.upx`, 之后将文件拖动到 utools 输入框中即可安装
+
+### 自动安装
+
+~~本插件现已发布至 utools 插件应用市场, 在市场中搜索 `思源笔记` 即可安装~~
+
+上架 utools 插件应用市场要求 `proload.js` 文件在打包时不进行混淆, 在这里诚心征集使用 `vite` 或 `rollup` 进行生产环境构建时不对代码进行压缩与混淆的方案:heart:
 
 ## 功能
 

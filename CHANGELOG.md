@@ -1,5 +1,7 @@
 # 更改日志 | CHANGE LOG
 
+- 升级环境依赖 | Upgrade environment dependencies.
+
 ## v0.1.0/2023-02-11
 
 - 初始化项目 | Init project

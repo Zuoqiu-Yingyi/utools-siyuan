@@ -6,6 +6,8 @@ export default defineConfig({
     base: `./`,
     plugins: [vue()],
     build: {
+        // REF https://cn.vitejs.dev/config/build-options.html#build-minify
+        minify: false,
         rollupOptions: {
             input: {
                 preload: './src/preload.ts',

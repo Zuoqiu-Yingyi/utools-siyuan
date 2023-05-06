@@ -2,7 +2,7 @@
 
 ## v0.1.1/2023-05-07
 
-- [v0.1.0 ... v0.1.1](https://github.com/Zuoqiu-Yingyi/siyuan-theme-dark-plus/compare/v0.1.0...v0.1.1)
+- [v0.1.0 ... v0.1.1](https://github.com/Zuoqiu-Yingyi/utools-siyuan/compare/v0.1.0...v0.1.1)
 - 升级环境依赖 | Upgrade environment dependencies.
 - [#2](https://github.com/Zuoqiu-Yingyi/utools-siyuan/issues/2) 构建时禁用最小化混淆 | Disable minification during build.
 

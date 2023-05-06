@@ -37,7 +37,8 @@ utools 插件 - 思源笔记
 本插件现已发布至 utools 插件应用市场, 在市场中搜索 `思源笔记` 即可安装
 
 ~~上架 utools 插件应用市场要求 `proload.js` 文件在打包时不进行混淆, 在这里诚心征集使用 `vite` 或 `rollup` 进行生产环境构建时不对代码进行压缩与混淆的方案:heart:~~
-感谢 @leolee9086 的[帮助](https://github.com/Zuoqiu-Yingyi/utools-siyuan/issues/2), 已解决代码混淆与压缩问题:heart:
+
+感谢 [leolee9086](https://github.com/leolee9086) 的 [帮助](https://github.com/Zuoqiu-Yingyi/utools-siyuan/issues/2), 已解决代码混淆与压缩问题:heart:
 
 ## 功能
 

@@ -29,7 +29,7 @@
         "wrap_breadcrumb": "面包屑换行",
         "wrap_breadcrumb_item": "面包屑项换行"
     },
-    "language": "语言",
+    "language": "界面语言",
     "list": "列表",
     "memo": "备注",
     "name": "命名",
@@ -76,6 +76,13 @@
             "regex": "正则表达式",
             "sql": "SQL 语句"
         },
+        "open": {
+            "details": "点击搜索结果跳转到目标块的方案",
+            "label": "打开方案",
+            "siyuan_desktop": "桌面端",
+            "siyuan_pwa": "渐进式网络应用 (PWA)",
+            "siyuan_web": "浏览器"
+        },
         "orderBy": {
             "createdASC": "创建时间升序",
             "createdDESC": "创建时间降序",
@@ -110,7 +117,7 @@
     "test": "测试",
     "theme": {
         "dark": "深色@:theme.label",
-        "label": "主题",
+        "label": "界面主题",
         "light": "浅色@:theme.label",
         "system": "跟随系统"
     },

@@ -28,6 +28,7 @@ import { init } from "./../utils/language";
 import { merge } from "./../utils/object";
 import { IconDataURL } from "./../utils/icon";
 import { Status } from "./../utils/status";
+import { OpenMode } from "./../utils/open";
 import {
     BlockType,
     GroupBy,
@@ -47,7 +48,7 @@ class Search extends Object implements IPlugin {
 
     protected _i18n = init();
     protected _dom = document.createElement('span');
-    protected _status = ref(Status.normal);;
+    protected _status = ref(Status.normal);
     protected _message = ref("");
     protected _config = config_default;
     protected _client = new SiyuanClient(new URL(this._config.server.url), this._config.server.token, this._status, this._message);
@@ -105,7 +106,20 @@ class Search extends Object implements IPlugin {
 
     /* 构造 siyuan url */
     protected buildSiyuanURL(id: ID, focus = false): URL {
-        const url = new URL(`siyuan://blocks/${id}`);
+        var url: URL;
+        switch (this._config.other.open.mode) {
+            default:
+            case OpenMode.siyuan_desktop:
+                url = new URL(`siyuan://blocks/${id}`);
+                break;
+            case OpenMode.siyuan_web:
+                url = new URL(this._config.server.url);
+                url.searchParams.set("id", id);
+                break;
+            case OpenMode.siyuan_pwa:
+                url = new URL(`web+siyuan://blocks/${id}`);
+                break;
+        }
         if (focus) url.searchParams.set("focus", "1");
         return url;
     }

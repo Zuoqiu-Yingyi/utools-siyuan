@@ -2,9 +2,10 @@ import {
     GroupBy,
     Method,
     OrderBy,
-} from "../utils/siyuan";
+} from "./../utils/siyuan";
 
 import { IConfig } from "./../types/config";
+import { OpenMode } from "./../utils/open";
 
 export default {
     server: {
@@ -36,6 +37,9 @@ export default {
         },
     },
     other: {
+        open: {
+            mode: OpenMode.siyuan_desktop,
+        },
         language: {
             tag: "zh-Hans",
             label: "",

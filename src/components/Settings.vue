@@ -12,6 +12,7 @@ import { INotebooks } from "./../types/siyuan";
 
 import { Method, GroupBy, OrderBy, Leaf, Container, washNotebooks, SiyuanClient } from "./../utils/siyuan";
 import { Theme, THEME_MOD } from "./../utils/theme";
+import { OpenMode } from "./../utils/open";
 import { copy, merge } from "./../utils/object";
 
 // const { t: $t } = useI18n();
@@ -395,6 +396,24 @@ function onChange(key: string | number | Record<string, unknown> | (string | num
                                     </a-checkbox-group>
                                 </fieldset>
                             </a-space>
+                        </a-form-item>
+
+                        <!-- 搜索结果打开方案 -->
+                        <a-form-item :label="$t('search_config.open.label')">
+                            <template #help>{{ $t("search_config.open.details") }}</template>
+
+                            <!-- 搜索结果打开方案选择 -->
+                            <a-select v-model:model-value="config.other.open.mode">
+                                <a-option :value="OpenMode.siyuan_desktop">
+                                    {{ $t("search_config.open.siyuan_desktop") }}
+                                </a-option>
+                                <a-option :value="OpenMode.siyuan_web">
+                                    {{ $t("search_config.open.siyuan_web") }}
+                                </a-option>
+                                <a-option :value="OpenMode.siyuan_pwa">
+                                    {{ $t("search_config.open.siyuan_pwa") }}
+                                </a-option>
+                            </a-select>
                         </a-form-item>
                     </a-collapse-item>
 

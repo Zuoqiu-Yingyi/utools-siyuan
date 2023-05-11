@@ -1,6 +1,6 @@
 # utools-siyuan
 
-<center>
+<div align="center">
 
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/Zuoqiu-Yingyi/utools-siyuan?include_prereleases&style=flat-square)](https://github.com/Zuoqiu-Yingyi/utools-siyuan/releases/latest)
 [![GitHub Release Date](https://img.shields.io/github/release-date/Zuoqiu-Yingyi/utools-siyuan?style=flat-square)](https://github.com/Zuoqiu-Yingyi/utools-siyuan/releases/latest)
@@ -10,7 +10,7 @@
 ![hits](https://hits.b3log.org/Zuoqiu-Yingyi/utools-siyuan.svg)
 [![GitHub all releases](https://img.shields.io/github/downloads/Zuoqiu-Yingyi/utools-siyuan/total?style=flat-square)](https://github.com/Zuoqiu-Yingyi/utools-siyuan/releases)
 
-</center>
+</div>
 
 utools 插件 - 思源笔记
 
@@ -51,7 +51,7 @@ utools 插件 - 思源笔记
     - `思源服务`: 思源笔记内核服务地址, 可以是本地服务地址, 也可以是远程服务地址
       - `端口`: 思源笔记内核服务的端口, 可以在 `设置>关于>在浏览器上使用` 中获取
         - **注: 桌面端第一个打开的工作空间会同时监听一个随机端口与固定的 `6806` 端口**
-    - `API Token`: 思源笔记内核服务的 API Token, 可以在思源笔记 `设置>关于>API Token` 中获取
+    - `API Token`: 思源笔记内核服务的 API Token, 可以在思源笔记 `设置 > 关于 > API Token` 中获取
       - 若服务未启用 `访问授权码` (`设置>关于>访问授权码` 为空), 则无需设置该选项
   - `搜索设置`: 插件搜索功能相关设置项
     - `搜索方案`: 插件使用的搜索方案
@@ -72,8 +72,12 @@ utools 插件 - 思源笔记
       - `修改时间降序`: 最后修改时间越晚的搜索结果越靠前
       - `修改时间升序`: 最后修改时间越早的搜索结果越靠前
     - `搜索目录`: 在指定文档目录下搜索
-      - **默认选项** 搜索目录为空时会在所有文档目录下搜索
+      - **默认选项*- 搜索目录为空时会在所有文档目录下搜索
     - `块类型`: 搜索时仅搜索指定的块类型
+    - `打开方案`: 单击搜索结果时跳转到对应块的方案
+      - `桌面端`: 使用 `siyuan://` 协议打开
+      - `浏览器`: 使用 `http(s)://host:port` 超链接打开
+      - `渐进式网络应用 (PWA)`: 使用 `web+siyuan://` 协议打开
   - `其他设置`: 外观等其他设置
     - `语言`: 插件界面语言
       - `English`
@@ -84,9 +88,16 @@ utools 插件 - 思源笔记
       - `深色主题`
       - `跟随系统`: **默认选项**
 
-### 笔记内容搜索
+### 全局搜索
 
 在 utools 输入框中输入 `sy` / `sy-search` / `思源搜索` 后点击第一个搜索结果即可进入插件设置页面
+
+- 搜索输入框为空时显示最近打开的文档
+- 搜索输入框不为空时显示搜索结果
+  - 由于思源全局搜索目前启用了分页, 所以目前仅支持显示前 32 个搜索结果
+  - 搜索结果内容受到插件配置中的搜索设置配置项影响
+  - 搜索结果匹配的关键字会使用 `⸢` 与 `⸥` 包围
+- 点击搜索结果会通过搜索配置项 `打开方案` 指定的方案跳转到对应的块
 
 ## 参考 & 感谢
 

@@ -1,4 +1,5 @@
 import { IPayload_fullTextSearchBlock } from "./siyuan"
+import { OPEN_MODE } from "./open"
 
 export interface IServer {
     protocol: string,
@@ -12,9 +13,14 @@ export interface IConfig {
     server: IServer,
     search: Omit<IPayload_fullTextSearchBlock, 'query'>, // 省略 query 属性
     other: {
+        open: IOpen,
         language: ILanguage,
         languages: ILanguage[],
     },
+}
+
+export interface IOpen {
+    mode: OPEN_MODE,
 }
 
 export interface ILanguage {
@@ -22,7 +28,7 @@ export interface ILanguage {
     label: string, // 语言名称
 }
 
-export interface IStorage { 
+export interface IStorage {
     config: IConfig,
     configs: [string, IConfig][],
 }

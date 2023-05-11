@@ -77,6 +77,13 @@
             "regex": "Regular Expression",
             "sql": "SQL Statement"
         },
+        "open": {
+            "details": "The scheme of click the search result to jump to the target block",
+            "label": "Open Scheme",
+            "siyuan_desktop": "Desktop",
+            "siyuan_pwa": "Progressive Web Application (PWA)",
+            "siyuan_web": "Browser"
+        },
         "orderBy": {
             "createdASC": "Ascending by Creation Time",
             "createdDESC": "Descending by Creation Time",

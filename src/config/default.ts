@@ -16,7 +16,7 @@ export default {
         url: "http://localhost:6806",
     },
     search: {
-        groupBy: GroupBy.group,
+        groupBy: GroupBy.noGroupBy,
         method: Method.keyword,
         orderBy: OrderBy.sortByRankDesc,
         paths: [],

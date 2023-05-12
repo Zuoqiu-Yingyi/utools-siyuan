@@ -4,6 +4,7 @@
   - 桌面端 | Desktop
   - 浏览器 | Browser
   - 渐进式网络应用 | Progressive Web Application (PWA)
+- [#5](https://github.com/Zuoqiu-Yingyi/utools-siyuan/issues/5) 修复块类型过滤选项保存问题 | Fix the issue of block type filter option save.
 
 ## v0.1.1/2023-05-07
 

@@ -82,40 +82,44 @@ const container_indeterminate = computed(() => containers.value.length > 0 && co
 
 /* 处理叶子块全选 */
 function handleLeaf(value: boolean | (string | number | boolean)[]): void {
+    const values: Leaf[] = [];
     if (value) {
-        leafs.value = [Leaf.h, Leaf.p, Leaf.m, Leaf.t, Leaf.c, Leaf.html, Leaf.query_embed];
-    } else {
-        leafs.value = [];
+        values.push(Leaf.h, Leaf.p, Leaf.m, Leaf.t, Leaf.c, Leaf.html, Leaf.query_embed);
     }
+
+    leafs.value = values;
+    handleLeafs(values);
 }
 
 /* 处理叶子块选择 */
 function handleLeafs(values: (string | number | boolean)[]): void {
-    config.search.types.heading = Leaf.h in values;
-    config.search.types.paragraph = Leaf.p in values;
-    config.search.types.mathBlock = Leaf.m in values;
-    config.search.types.table = Leaf.t in values;
-    config.search.types.codeBlock = Leaf.c in values;
-    config.search.types.htmlBlock = Leaf.html in values;
-    config.search.types.embedBlock = Leaf.query_embed in values;
+    config.search.types.heading = values.includes(Leaf.h);
+    config.search.types.paragraph = values.includes(Leaf.p);
+    config.search.types.mathBlock = values.includes(Leaf.m);
+    config.search.types.table = values.includes(Leaf.t);
+    config.search.types.codeBlock = values.includes(Leaf.c);
+    config.search.types.htmlBlock = values.includes(Leaf.html);
+    config.search.types.embedBlock = values.includes(Leaf.query_embed);
 }
 
 /* 处理容器块全选 */
 function handleContainer(value: boolean | (string | number | boolean)[]): void {
+    const values: Container[] = [];
     if (value) {
-        containers.value = [Container.d, Container.s, Container.b, Container.l, Container.i];
-    } else {
-        containers.value = [];
+        values.push(Container.d, Container.s, Container.b, Container.l, Container.i);
     }
+
+    containers.value = values;
+    handleContainers(values);
 }
 
 /* 处理容器块选择 */
 function handleContainers(values: (string | number | boolean)[]): void {
-    config.search.types.document = Container.d in values;
-    config.search.types.superBlock = Container.s in values;
-    config.search.types.blockquote = Container.b in values;
-    config.search.types.list = Container.l in values;
-    config.search.types.listItem = Container.i in values;
+    config.search.types.document = values.includes(Container.d);
+    config.search.types.superBlock = values.includes(Container.s);
+    config.search.types.blockquote = values.includes(Container.b);
+    config.search.types.list = values.includes(Container.l);
+    config.search.types.listItem = values.includes(Container.i);
 }
 /* 👆 搜索型过滤 👆 */
 

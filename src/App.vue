@@ -70,6 +70,15 @@ if (import.meta.env.PROD) {
             configs: copy(entries),
         } as IStorage);
     });
+} else if (import.meta.env.DEV) {
+/* 开发环境 */
+    /* 保存用户配置列表 */
+    watch(configs_entries, entries => {
+        console.log({
+            config: copy(config),
+            configs: copy(entries),
+        });
+    });
 }
 
 const status = ref(Status.normal); // 连接状态

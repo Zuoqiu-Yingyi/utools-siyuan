@@ -30,7 +30,7 @@ function isProxy(obj: Obj): boolean {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function isArray(arr: any[]): boolean {
+function isArray(arr: Obj): boolean {
     return Array.isArray(arr);
 }
 
@@ -62,6 +62,15 @@ function merge(target: Obj, ...arg: Obj[]): Obj {
     }, target);
 }
 
-function copy<T extends Obj>(obj: T): T {
-    return merge({}, toRaw(obj)) as T;
+function copy<T extends (Obj | Obj[])>(obj: T): T {
+    const obj_raw = toRaw(obj);
+    if (isObject(obj_raw)) {
+        return merge({}, obj_raw) as T;
+    }
+    else if (isArray(obj_raw)) {
+        return (obj_raw as Obj[]).map(item => copy(item)) as T;
+    }
+    else {
+        return obj_raw;
+    }
 }

@@ -19,6 +19,7 @@ export default {
         groupBy: GroupBy.noGroupBy,
         method: Method.keyword,
         orderBy: OrderBy.sortByRankDesc,
+        page: 1,
         paths: [],
         types: {
             heading: true,
@@ -37,6 +38,7 @@ export default {
         },
     },
     other: {
+        maxPage: 1,
         open: {
             mode: OpenMode.siyuan_desktop,
         },

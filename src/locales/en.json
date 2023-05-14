@@ -18,7 +18,6 @@
     "hostname": "IP Address {'|'} Domain Name {'|'} Host Name",
     "label": {
         "auto_open": "Auto Open",
-        "default_tab": "Default Tab",
         "delete": "Delete",
         "fold": "Fold",
         "preview_focus": "Preview Focus",
@@ -95,6 +94,10 @@
             "sortByRankAsc": "Ascending by Relevance",
             "sortByRankDesc": "Descending by Relevance",
             "type": "Block Type"
+        },
+        "page": {
+            "details": "Show how many pages of paginated search results (0 means show all search results)",
+            "label": "Number of pages"
         },
         "path": {
             "details": "Search in One or More Directories",

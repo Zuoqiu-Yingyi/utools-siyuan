@@ -72,6 +72,7 @@ export interface IPayload_fullTextSearchBlock {
     groupBy: GroupBy; // 搜索结果分组方案
     method: Method; // 搜索方案
     orderBy: OrderBy; // 搜索结果排序方案
+    page: number; // 分页序号
     paths: string[]; // 指定搜索路径(以 *.sy 结尾不包含子文档)
     query: string; // 查询语句
     types: BlockTypes; // 搜索块类型
@@ -115,6 +116,7 @@ export interface Data_fullTextSearchBlock {
     blocks: Block_fullTextSearchBlock[];
     matchedBlockCount: number;
     matchedRootCount: number;
+    pageCount: number;
 }
 
 export interface IResponse_fullTextSearchBlock {

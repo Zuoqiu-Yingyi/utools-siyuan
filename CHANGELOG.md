@@ -5,6 +5,7 @@
   - 浏览器 | Browser
   - 渐进式网络应用 | Progressive Web Application (PWA)
 - [#5](https://github.com/Zuoqiu-Yingyi/utools-siyuan/issues/5) 修复块类型过滤选项保存问题 | Fix the issue of block type filter option save.
+- [#4](https://github.com/Zuoqiu-Yingyi/utools-siyuan/issues/4) 支持在插件配置界面设置每次搜索时加载的搜索结果分页数量 | Support setting the number of search results pages loaded each time in the plugin configuration interface.
 
 ## v0.1.1/2023-05-07
 

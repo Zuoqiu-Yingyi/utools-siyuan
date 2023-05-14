@@ -20,6 +20,7 @@ import {
     ID,
     INotebooks,
     Block_fullTextSearchBlock,
+    IResponse_fullTextSearchBlock,
 } from "./../types/siyuan";
 import { IPlugin } from "./../types/utools";
 import { IStorage } from "./../types/config";
@@ -198,12 +199,38 @@ class Search extends Object implements IPlugin {
 
         const payload = Object.assign({}, this._config.search, {
             query: searchWord,
+            page: 1,
         });
 
+        const blocks: CallbackListItem[] = [];
         const response = await this._client.fullTextSearchBlock(payload);
 
         // 执行 callbackSetList 显示出来
-        callbackSetList(this.blocks2list(response?.data.blocks ?? []));
+        const pageCount = response?.data.pageCount ?? 1; // 查询内容总分页数
+        const page_count = this._config.other.maxPage <= 0
+            ? pageCount
+            : Math.min(pageCount, this._config.other.maxPage); // 需要查询的分页数
+        if (page_count > 1) { // 如果需要查询多页数据
+            const responses: IResponse_fullTextSearchBlock[] = [];
+            responses[0] = response;
+
+            const promise_pool: Promise<IResponse_fullTextSearchBlock>[] = [];
+            for (let page = 2; page <= page_count; ++page) {
+                payload.page = page;
+                promise_pool.push(this._client.fullTextSearchBlock(payload));
+            }
+            Promise.all(promise_pool)
+                .then(res => {
+                    responses.push(...res);
+                }).finally(() => {
+                    responses.forEach(response => blocks.push(...this.blocks2list(response?.data.blocks ?? [])))
+                    callbackSetList(blocks);
+                });
+        }
+        else { // 如果仅需要查询第一页数据
+            blocks.push(...this.blocks2list(response?.data.blocks ?? []))
+            callbackSetList(blocks);
+        }
 
         // callbackSetList([
         //     {

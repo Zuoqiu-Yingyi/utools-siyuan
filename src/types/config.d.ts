@@ -13,6 +13,7 @@ export interface IConfig {
     server: IServer,
     search: Omit<IPayload_fullTextSearchBlock, 'query'>, // 省略 query 属性
     other: {
+        maxPage: number,
         open: IOpen,
         language: ILanguage,
         languages: ILanguage[],

@@ -402,6 +402,18 @@ function onChange(key: string | number | Record<string, unknown> | (string | num
                             </a-space>
                         </a-form-item>
 
+                        <!-- 搜索结果显示的分页数 -->
+                        <a-form-item :label="$t('search_config.page.label')">
+                            <template #help>{{ $t("search_config.page.details") }}</template>
+                            <a-input-number
+                                v-model:model-value="config.other.maxPage"
+                                :min="0"
+                                :precision="0"
+                                mode="button"
+                                size="mini"
+                            />
+                        </a-form-item>
+
                         <!-- 搜索结果打开方案 -->
                         <a-form-item :label="$t('search_config.open.label')">
                             <template #help>{{ $t("search_config.open.details") }}</template>

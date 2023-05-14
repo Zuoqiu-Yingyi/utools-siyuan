@@ -1,5 +1,8 @@
 # 更改日志 | CHANGE LOG
 
+## v0.1.2/2023-05-14
+
+- [v0.1.1 ... v0.1.2](https://github.com/Zuoqiu-Yingyi/utools-siyuan/compare/v0.1.1...v0.1.2)
 - 支持在设置界面中设置打开搜索结果的方案 | Support setting the scheme to open the search results in the settings interface.
   - 桌面端 | Desktop
   - 浏览器 | Browser

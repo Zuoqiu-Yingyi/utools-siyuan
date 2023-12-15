@@ -1,5 +1,8 @@
 # 更改日志 | CHANGE LOG
 
+## v0.1.3/2023-12-15
+
+- [v0.1.2 ... v0.1.3](https://github.com/Zuoqiu-Yingyi/utools-siyuan/compare/v0.1.2...v0.1.3)
 - [#7](https://github.com/Zuoqiu-Yingyi/utools-siyuan/issues/7) 支持在 uTools 窗口中打开搜索结果 | Support opening search results in uTools window.
 - 改进配置切换交互 | Improve configuration switching interaction.
 

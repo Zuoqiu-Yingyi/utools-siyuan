@@ -113,12 +113,17 @@ class Search extends Object implements IPlugin {
             case OpenMode.siyuan_desktop:
                 url = new URL(`siyuan://blocks/${id}`);
                 break;
+            case OpenMode.siyuan_pwa:
+                url = new URL(`web+siyuan://blocks/${id}`);
+                break;
             case OpenMode.siyuan_web:
                 url = new URL(this._config.server.url);
                 url.searchParams.set("id", id);
                 break;
-            case OpenMode.siyuan_pwa:
-                url = new URL(`web+siyuan://blocks/${id}`);
+            case OpenMode.utools_window:
+                url = new URL(this._config.server.url);
+                url.pathname = "/stage/build/mobile/"
+                url.searchParams.set("id", id);
                 break;
         }
         if (focus) url.searchParams.set("focus", "1");
@@ -244,7 +249,25 @@ class Search extends Object implements IPlugin {
 
     // 用户选择列表中某个条目时被调用
     select(action: Action, itemData: CallbackListItem, callbackSetList: CallbackSetList) {
-        utools.shellOpenExternal(itemData.url!);
-        window.utools.hideMainWindow();
+        switch (this._config.other.open.mode) {
+            case OpenMode.siyuan_desktop:
+            case OpenMode.siyuan_pwa:
+            case OpenMode.siyuan_web:
+                utools.shellOpenExternal(itemData.url!);
+                break;
+
+            case OpenMode.utools_window:
+            default:
+                // REF: https://www.u.tools/docs/developer/ubrowser.html#ubrowser-api
+                utools.ubrowser
+                    .goto(itemData.url!)
+                    .run({
+                        show: true,
+                        center: true,
+                        alwaysOnTop: true,
+                    });
+                break;
+        }
+        // window.utools.hideMainWindow();
     }
 }

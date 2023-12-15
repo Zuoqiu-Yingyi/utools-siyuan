@@ -81,7 +81,8 @@
             "label": "打開方案",
             "siyuan_desktop": "桌面端",
             "siyuan_pwa": "漸進式網路應用 (PWA)",
-            "siyuan_web": "瀏覽器"
+            "siyuan_web": "默認瀏覽器",
+            "utools_window": "uTools 窗口"
         },
         "orderBy": {
             "createdASC": "創建時間升序",

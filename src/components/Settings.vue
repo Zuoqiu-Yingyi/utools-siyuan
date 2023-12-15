@@ -423,11 +423,14 @@ function onChange(key: string | number | Record<string, unknown> | (string | num
                                 <a-option :value="OpenMode.siyuan_desktop">
                                     {{ $t("search_config.open.siyuan_desktop") }}
                                 </a-option>
+                                <a-option :value="OpenMode.siyuan_pwa">
+                                    {{ $t("search_config.open.siyuan_pwa") }}
+                                </a-option>
                                 <a-option :value="OpenMode.siyuan_web">
                                     {{ $t("search_config.open.siyuan_web") }}
                                 </a-option>
-                                <a-option :value="OpenMode.siyuan_pwa">
-                                    {{ $t("search_config.open.siyuan_pwa") }}
+                                <a-option :value="OpenMode.utools_window">
+                                    {{ $t("search_config.open.utools_window") }}
                                 </a-option>
                             </a-select>
                         </a-form-item>

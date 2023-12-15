@@ -81,7 +81,8 @@
             "label": "Open Scheme",
             "siyuan_desktop": "Desktop",
             "siyuan_pwa": "Progressive Web Application (PWA)",
-            "siyuan_web": "Browser"
+            "siyuan_web": "Default Browser",
+            "utools_window": "uTools Window"
         },
         "orderBy": {
             "createdASC": "Ascending by Creation Time",

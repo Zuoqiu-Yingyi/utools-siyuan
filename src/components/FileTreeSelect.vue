@@ -75,7 +75,7 @@ async function onsearch(k: string): Promise<void> {
             expanded_keys.value = (() => {
                 const keys: string[] = [];
                 for (const node of doctree.map.values()) {
-                    if (!node.disabled ?? false) keys.push(node.key);
+                    if (!node.disabled) keys.push(node.key);
                 }
                 return keys;
             })(); // 展开搜索结果

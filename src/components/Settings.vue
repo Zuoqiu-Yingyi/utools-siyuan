@@ -131,7 +131,7 @@ const theme = inject("theme") as InstanceType<typeof Theme>; // 用户配置
 const configs = inject("configs") as UnwrapNestedRefs<Map<string, IConfig>>; // 用户配置列表
 const config_default = inject("config_default") as IConfig; // 用户默认配置
 const options = computed(() => [...configs.keys()]);
-const model_value = ref(""); // 选择框值
+const model_value = ref(config.server.url); // 选择框值
 
 function saveOnClick(): void {
     configs.set(config.server.url, copy(config));
@@ -145,7 +145,7 @@ function deleteOnClick(): void {
 
 function resetOnClick(): void {
     merge(config, config_default);
-    model_value.value = "";
+    model_value.value = config.server.url;
 }
 
 function onChange(key: string | number | Record<string, unknown> | (string | number | Record<string, unknown>)[]): void {
